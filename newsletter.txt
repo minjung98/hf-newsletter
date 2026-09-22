@@ -1,0 +1,155 @@
+
+==========================================
+🤗 Hugging Face Daily Papers
+한국어 뉴스레터
+==========================================
+
+📅 2026년 09월 21일
+
+📊 오늘의 논문: 10개
+
+
+------------------------------------------
+1. Grounded Skill Synthesis from Code at Scale for Agentic Intelligence
+------------------------------------------
+원어: Grounded Skill Synthesis from Code at Scale for Agentic Intelligence
+
+저자: Authors not available
+업보트: 0
+
+요약:
+
+
+링크: https://huggingface.co/papers/2609.22076
+
+
+------------------------------------------
+2. CodeMidas: Scaling Agentic Coding RL Environments from Code Itself
+------------------------------------------
+원어: CodeMidas: Scaling Agentic Coding RL Environments from Code Itself
+
+저자: Authors not available
+업보트: 0
+
+요약:
+
+
+링크: https://huggingface.co/papers/2609.21346
+
+
+------------------------------------------
+3. EvoOntology: A Self-Evolving Ontology Layer for 데이터 Agents
+------------------------------------------
+원어: EvoOntology: A Self-Evolving Ontology Layer for Data Agents
+
+저자: Authors not available
+업보트: 0
+
+요약:
+
+
+링크: https://huggingface.co/papers/2609.15779
+
+
+------------------------------------------
+4. RecreationWorld: Scalable and Verifiable Environments for Hybrid Computer-Use Agents
+------------------------------------------
+원어: RecreationWorld: Scalable and Verifiable Environments for Hybrid Computer-Use Agents
+
+저자: Authors not available
+업보트: 0
+
+요약:
+
+
+링크: https://huggingface.co/papers/2609.22083
+
+
+------------------------------------------
+5. IntBMoE: Integrating Block-Level Conditioning into Expert Composition for Full-Participation Mixture-of-Experts
+------------------------------------------
+원어: IntBMoE: Integrating Block-Level Conditioning into Expert Composition for Full-Participation Mixture-of-Experts
+
+저자: Authors not available
+업보트: 0
+
+요약:
+
+
+링크: https://huggingface.co/papers/2609.20942
+
+
+------------------------------------------
+6. OmniVChat: Synthesizing, Benchmarking, and 학습 for Native 오디오-Visual Dialogue
+------------------------------------------
+원어: OmniVChat: Synthesizing, Benchmarking, and Training for Native Audio-Visual Dialogue
+
+저자: Authors not available
+업보트: 0
+
+요약:
+
+
+링크: https://huggingface.co/papers/2609.05571
+
+
+------------------------------------------
+7. Paint-Anything: Unified Any-Color Control for 이미지 생성 and Editing
+------------------------------------------
+원어: Paint-Anything: Unified Any-Color Control for Image Generation and Editing
+
+저자: Authors not available
+업보트: 0
+
+요약:
+
+
+링크: https://huggingface.co/papers/2609.20816
+
+
+------------------------------------------
+8. OmniVBench: A 벤치마크 and Large-Scale 데이터셋 for Omni Reference-to-비디오 생성
+------------------------------------------
+원어: OmniVBench: A Benchmark and Large-Scale Dataset for Omni Reference-to-Video Generation
+
+저자: Authors not available
+업보트: 0
+
+요약:
+
+
+링크: https://huggingface.co/papers/2609.18766
+
+
+------------------------------------------
+9. GraphSkillEvo: Evolutionary 최적화 of Graph-Structured Agent Skills
+------------------------------------------
+원어: GraphSkillEvo: Evolutionary Optimization of Graph-Structured Agent Skills
+
+저자: Authors not available
+업보트: 0
+
+요약:
+
+
+링크: https://huggingface.co/papers/2609.18748
+
+
+------------------------------------------
+10. MintAct: A Unified Visual Agent for Digital Environments
+------------------------------------------
+원어: MintAct: A Unified Visual Agent for Digital Environments
+
+저자: Authors not available
+업보트: 0
+
+요약:
+
+
+링크: https://huggingface.co/papers/2609.15126
+
+
+==========================================
+Hugging Face Daily Papers에서 더 많은 논문 확인하기:
+https://huggingface.co/papers
+==========================================

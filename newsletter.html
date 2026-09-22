@@ -1,0 +1,865 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugging Face Daily Papers - 2026년 09월 21일</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #FFD21E 0%, #FF9D0B 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 16px 16px 0 0;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .date-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+        
+        .content {
+            background: white;
+            padding: 24px;
+            border-radius: 0 0 16px 16px;
+        }
+        
+        .paper-card {
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: box-shadow 0.3s;
+        }
+        
+        .paper-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .paper-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: #FFD21E;
+            color: #333;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 12px;
+        }
+        
+        .paper-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .paper-title-en {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+        
+        .paper-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .meta-item svg {
+            width: 14px;
+            height: 14px;
+        }
+        
+        .organization {
+            background: #f0f7ff;
+            color: #0066cc;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+        
+        .paper-summary {
+            background: #fafafa;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #444;
+            line-height: 1.7;
+        }
+        
+        .paper-summary-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .key-points {
+            margin-top: 12px;
+        }
+        
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        
+        .key-point::before {
+            content: "•";
+            color: #FFD21E;
+            font-weight: bold;
+        }
+        
+        .view-button {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 16px;
+            background: #FFD21E;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .view-button:hover {
+            background: #e6bc0a;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 24px;
+            color: #888;
+            font-size: 12px;
+        }
+        
+        .footer a {
+            color: #FF9D0B;
+            text-decoration: none;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF9D0B;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+        }
+        /* 모바일 최적화 */
+        @media (max-width: 768px) {
+            body { font-size: 15px; }
+            .container { padding: 12px; }
+            .header { padding: 20px 16px; border-radius: 12px 12px 0 0; }
+            .header h1 { font-size: 22px; }
+            .header .subtitle { font-size: 14px; }
+            .date-badge { font-size: 12px; padding: 4px 12px; }
+            .content { padding: 16px; border-radius: 0 0 12px 12px; }
+            .paper-card { padding: 16px; margin-bottom: 16px; border-radius: 10px; }
+            .paper-title { font-size: 16px; }
+            .paper-title-en { font-size: 13px; }
+            .paper-meta { gap: 8px; font-size: 12px; }
+            .paper-summary { padding: 12px; font-size: 13px; line-height: 1.6; }
+            .view-button { width: 100%; text-align: center; padding: 10px 16px; }
+            .stats { gap: 16px; }
+            .stat-number { font-size: 20px; }
+            .stat-label { font-size: 11px; }
+            .footer { padding: 16px; font-size: 11px; }
+            .chat-container { width: calc(100vw - 20px); right: 10px; bottom: 10px; max-height: 70vh; border-radius: 16px; }
+            .chat-toggle { width: 50px; height: 50px; font-size: 20px; right: 15px; bottom: 15px; }
+            .chat-messages { min-height: 150px; max-height: calc(70vh - 130px); padding: 12px; }
+            .message { font-size: 14px; padding: 10px 14px; }
+            .chat-input-area { padding: 10px; }
+            .chat-input { padding: 12px 14px; font-size: 15px; }
+            .chat-send { padding: 12px 14px; }
+            .api-key-input { font-size: 14px; padding: 10px; }
+        }
+
+
+        /* 챗봇 스타일 */
+        .chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 380px;
+            max-width: calc(100vw - 40px);
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-height: 500px;
+            z-index: 1000;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #FFD21E 0%, #FF9D0B 100%);
+            color: white;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            min-height: 200px;
+            max-height: 300px;
+        }
+
+        .message {
+            margin-bottom: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message.user {
+            background: #FFD21E;
+            color: #333;
+            margin-left: 20px;
+        }
+
+        .message.assistant {
+            background: #f0f0f0;
+            color: #333;
+            margin-right: 20px;
+        }
+
+        .message.loading {
+            background: #f0f0f0;
+            color: #666;
+            font-style: italic;
+        }
+
+        .chat-input-area {
+            padding: 12px;
+            border-top: 1px solid #eee;
+        }
+
+        .api-key-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 24px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .chat-input:focus {
+            border-color: #FFD21E;
+        }
+
+        .chat-send {
+            background: #FFD21E;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .chat-send:hover {
+            background: #e6bc0a;
+        }
+
+        .chat-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFD21E 0%, #FF9D0B 100%);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(255, 159, 11, 0.4);
+            font-size: 24px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤗 Hugging Face Daily Papers</h1>
+            <p class="subtitle">오늘의 AI/ML 연구 논문 뉴스레터</p>
+            <span class="date-badge">2026년 09월 21일</span>
+        </div>
+        
+        <div class="content">
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">논문 수</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">총 업보트</div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div style="margin-bottom: 12px;">
+                    <span class="paper-number">1</span>
+                    <span class="paper-title">Grounded Skill Synthesis from Code at Scale for Agentic Intelligence</span>
+                </div>
+                <div class="paper-title-en">Grounded Skill Synthesis from Code at Scale for Agentic Intelligence</div>
+                
+                <div class="paper-meta">
+                    <div class="meta-item">
+                        <span>👤</span>
+                        <span>Authors not available</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⬆️</span>
+                        <span>0 upvotes</span>
+                    </div>
+                    
+                </div>
+                
+                <div class="paper-summary">
+                    <span class="paper-summary-label">📝 요약</span>
+                    
+                    
+                </div>
+                
+                <a href="https://huggingface.co/papers/2609.22056" class="view-button">🔗 논문 보기 →</a>
+            </div>
+
+            <div class="paper-card">
+                <div style="margin-bottom: 12px;">
+                    <span class="paper-number">2</span>
+                    <span class="paper-title">CodeMidas: Scaling Agentic Coding RL Environments from Code Itself</span>
+                </div>
+                <div class="paper-title-en">CodeMidas: Scaling Agentic Coding RL Environments from Code Itself</div>
+                
+                <div class="paper-meta">
+                    <div class="meta-item">
+                        <span>👤</span>
+                        <span>Authors not available</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⬆️</span>
+                        <span>0 upvotes</span>
+                    </div>
+                    
+                </div>
+                
+                <div class="paper-summary">
+                    <span class="paper-summary-label">📝 요약</span>
+                    
+                    
+                </div>
+                
+                <a href="https://huggingface.co/papers/2609.21346" class="view-button">🔗 논문 보기 →</a>
+            </div>
+
+            <div class="paper-card">
+                <div style="margin-bottom: 12px;">
+                    <span class="paper-number">3</span>
+                    <span class="paper-title">EvoOntology: A Self-Evolving Ontology Layer for 데이터 Agents</span>
+                </div>
+                <div class="paper-title-en">EvoOntology: A Self-Evolving Ontology Layer for Data Agents</div>
+                
+                <div class="paper-meta">
+                    <div class="meta-item">
+                        <span>👤</span>
+                        <span>Authors not available</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⬆️</span>
+                        <span>0 upvotes</span>
+                    </div>
+                    
+                </div>
+                
+                <div class="paper-summary">
+                    <span class="paper-summary-label">📝 요약</span>
+                    
+                    
+                </div>
+                
+                <a href="https://huggingface.co/papers/2609.15779" class="view-button">🔗 논문 보기 →</a>
+            </div>
+
+            <div class="paper-card">
+                <div style="margin-bottom: 12px;">
+                    <span class="paper-number">4</span>
+                    <span class="paper-title">RecreationWorld: Scalable and Verifiable Environments for Hybrid Computer-Use Agents</span>
+                </div>
+                <div class="paper-title-en">RecreationWorld: Scalable and Verifiable Environments for Hybrid Computer-Use Agents</div>
+                
+                <div class="paper-meta">
+                    <div class="meta-item">
+                        <span>👤</span>
+                        <span>Authors not available</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⬆️</span>
+                        <span>0 upvotes</span>
+                    </div>
+                    
+                </div>
+                
+                <div class="paper-summary">
+                    <span class="paper-summary-label">📝 요약</span>
+                    
+                    
+                </div>
+                
+                <a href="https://huggingface.co/papers/2609.22083" class="view-button">🔗 논문 보기 →</a>
+            </div>
+
+            <div class="paper-card">
+                <div style="margin-bottom: 12px;">
+                    <span class="paper-number">5</span>
+                    <span class="paper-title">IntBMoE: Integrating Block-Level Conditioning into Expert Composition for Full-Participation Mixture-of-Experts</span>
+                </div>
+                <div class="paper-title-en">IntBMoE: Integrating Block-Level Conditioning into Expert Composition for Full-Participation Mixture-of-Experts</div>
+                
+                <div class="paper-meta">
+                    <div class="meta-item">
+                        <span>👤</span>
+                        <span>Authors not available</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⬆️</span>
+                        <span>0 upvotes</span>
+                    </div>
+                    
+                </div>
+                
+                <div class="paper-summary">
+                    <span class="paper-summary-label">📝 요약</span>
+                    
+                    
+                </div>
+                
+                <a href="https://huggingface.co/papers/2609.20942" class="view-button">🔗 논문 보기 →</a>
+            </div>
+
+            <div class="paper-card">
+                <div style="margin-bottom: 12px;">
+                    <span class="paper-number">6</span>
+                    <span class="paper-title">OmniVChat: Synthesizing, Benchmarking, and 학습 for Native 오디오-Visual Dialogue</span>
+                </div>
+                <div class="paper-title-en">OmniVChat: Synthesizing, Benchmarking, and Training for Native Audio-Visual Dialogue</div>
+                
+                <div class="paper-meta">
+                    <div class="meta-item">
+                        <span>👤</span>
+                        <span>Authors not available</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⬆️</span>
+                        <span>0 upvotes</span>
+                    </div>
+                    
+                </div>
+                
+                <div class="paper-summary">
+                    <span class="paper-summary-label">📝 요약</span>
+                    
+                    
+                </div>
+                
+                <a href="https://huggingface.co/papers/2609.05571" class="view-button">🔗 논문 보기 →</a>
+            </div>
+
+            <div class="paper-card">
+                <div style="margin-bottom: 12px;">
+                    <span class="paper-number">7</span>
+                    <span class="paper-title">Paint-Anything: Unified Any-Color Control for 이미지 생성 and Editing</span>
+                </div>
+                <div class="paper-title-en">Paint-Anything: Unified Any-Color Control for Image Generation and Editing</div>
+                
+                <div class="paper-meta">
+                    <div class="meta-item">
+                        <span>👤</span>
+                        <span>Authors not available</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⬆️</span>
+                        <span>0 upvotes</span>
+                    </div>
+                    
+                </div>
+                
+                <div class="paper-summary">
+                    <span class="paper-summary-label">📝 요약</span>
+                    
+                    
+                </div>
+                
+                <a href="https://huggingface.co/papers/2609.20816" class="view-button">🔗 논문 보기 →</a>
+            </div>
+
+            <div class="paper-card">
+                <div style="margin-bottom: 12px;">
+                    <span class="paper-number">8</span>
+                    <span class="paper-title">OmniVBench: A 벤치마크 and Large-Scale 데이터셋 for Omni Reference-to-비디오 생성</span>
+                </div>
+                <div class="paper-title-en">OmniVBench: A Benchmark and Large-Scale Dataset for Omni Reference-to-Video Generation</div>
+                
+                <div class="paper-meta">
+                    <div class="meta-item">
+                        <span>👤</span>
+                        <span>Authors not available</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⬆️</span>
+                        <span>0 upvotes</span>
+                    </div>
+                    
+                </div>
+                
+                <div class="paper-summary">
+                    <span class="paper-summary-label">📝 요약</span>
+                    
+                    
+                </div>
+                
+                <a href="https://huggingface.co/papers/2609.18766" class="view-button">🔗 논문 보기 →</a>
+            </div>
+
+            <div class="paper-card">
+                <div style="margin-bottom: 12px;">
+                    <span class="paper-number">9</span>
+                    <span class="paper-title">GraphSkillEvo: Evolutionary 최적화 of Graph-Structured Agent Skills</span>
+                </div>
+                <div class="paper-title-en">GraphSkillEvo: Evolutionary Optimization of Graph-Structured Agent Skills</div>
+                
+                <div class="paper-meta">
+                    <div class="meta-item">
+                        <span>👤</span>
+                        <span>Authors not available</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⬆️</span>
+                        <span>0 upvotes</span>
+                    </div>
+                    
+                </div>
+                
+                <div class="paper-summary">
+                    <span class="paper-summary-label">📝 요약</span>
+                    
+                    
+                </div>
+                
+                <a href="https://huggingface.co/papers/2609.18748" class="view-button">🔗 논문 보기 →</a>
+            </div>
+
+            <div class="paper-card">
+                <div style="margin-bottom: 12px;">
+                    <span class="paper-number">10</span>
+                    <span class="paper-title">MintAct: A Unified Visual Agent for Digital Environments</span>
+                </div>
+                <div class="paper-title-en">MintAct: A Unified Visual Agent for Digital Environments</div>
+                
+                <div class="paper-meta">
+                    <div class="meta-item">
+                        <span>👤</span>
+                        <span>Authors not available</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⬆️</span>
+                        <span>0 upvotes</span>
+                    </div>
+                    
+                </div>
+                
+                <div class="paper-summary">
+                    <span class="paper-summary-label">📝 요약</span>
+                    
+                    
+                </div>
+                
+                <a href="https://huggingface.co/papers/2609.15126" class="view-button">🔗 논문 보기 →</a>
+            </div>
+
+        </div>
+        
+        <div class="footer">
+            <p>
+                이 뉴스레터는 Hugging Face Daily Papers를 바탕으로<br>
+                자동으로 생성되었습니다.
+            </p>
+            <p style="margin-top: 8px;">
+                <a href="https://huggingface.co/papers">Hugging Face Papers</a> |
+                <a href="https://huggingface.co/papers/daily">구독 취소</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- 챗봇 토글 버튼 -->
+    <button class="chat-toggle" id="chatToggle" onclick="toggleChat()">
+        💬
+    </button>
+
+    <!-- 챗봇 컨테이너 -->
+    <div class="chat-container hidden" id="chatContainer">
+        <div class="chat-header">
+            <h3>🤖 논문 챗봇</h3>
+            <button class="chat-close" onclick="toggleChat()">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message assistant">
+                안녕하세요! 👋 오늘의 Hugging Face 논문에 대해 궁금한 점이 있으시면 질문해 주세요. 이 뉴스레터에 있는 논문들을 바탕으로 답변해 드리겠습니다.
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="password" class="api-key-input" id="apiKeyInput" placeholder="MiniMax API Key 입력 (처음 1회만)">
+            <div class="chat-input-wrapper">
+                <input type="text" class="chat-input" id="chatInput" placeholder="질문을 입력하세요..." onkeypress="handleKeyPress(event)">
+                <button class="chat-send" onclick="sendMessage()">전송</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 논문 데이터 (HTML에서 추출)
+        const papersContext = `
+오늘의 Hugging Face Daily Papers (2026년 09월 21일):
+
+1. Grounded Skill Synthesis from Code at Scale for Agentic Intelligence
+2. CodeMidas: Scaling Agentic Coding RL Environments from Code Itself
+3. EvoOntology: A Self-Evolving Ontology Layer for Data Agents
+4. RecreationWorld: Scalable and Verifiable Environments for Hybrid Computer-Use Agents
+5. IntBMoE: Integrating Block-Level Conditioning into Expert Composition for Full-Participation Mixture-of-Experts
+6. OmniVChat: Synthesizing, Benchmarking, and Training for Native Audio-Visual Dialogue
+7. Paint-Anything: Unified Any-Color Control for Image Generation and Editing
+8. OmniVBench: A Benchmark and Large-Scale Dataset for Omni Reference-to-Video Generation
+9. GraphSkillEvo: Evolutionary Optimization of Graph-Structured Agent Skills
+10. MintAct: A Unified Visual Agent for Digital Environments
+        `;
+
+        let apiKey = localStorage.getItem('minimax_api_key') || '';
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const apiKeyInput = document.getElementById('apiKeyInput');
+        const chatContainer = document.getElementById('chatContainer');
+        const chatToggle = document.getElementById('chatToggle');
+
+        // API 키가 저장되어 있으면 입력창에 표시
+        if (apiKey) {
+            apiKeyInput.value = '********';
+        }
+
+        function toggleChat() {
+            chatContainer.classList.toggle('hidden');
+            chatToggle.style.display = chatContainer.classList.contains('hidden') ? 'flex' : 'none';
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function addMessage(content, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = content;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addLoadingMessage() {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message loading';
+            messageDiv.id = 'loadingMessage';
+            messageDiv.textContent = '답변 생성 중...';
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeLoadingMessage() {
+            const loadingMessage = document.getElementById('loadingMessage');
+            if (loadingMessage) {
+                loadingMessage.remove();
+            }
+        }
+
+        async function sendMessage() {
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) return;
+
+            // API 키 처리
+            let currentApiKey = apiKeyInput.value;
+            if (currentApiKey && currentApiKey !== '********') {
+                apiKey = currentApiKey;
+                localStorage.setItem('minimax_api_key', apiKey);
+            }
+
+            if (!apiKey) {
+                addMessage('MiniMax API Key를 입력해 주세요.', 'assistant');
+                return;
+            }
+
+            // 사용자 메시지 추가
+            addMessage(userMessage, 'user');
+            chatInput.value = '';
+
+            // 로딩 메시지 추가
+            addLoadingMessage();
+
+            try {
+                const response = await fetch('https://api.minimax.chat/v1/text/chatcompletion_pro', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'MiniMax-Text-01',
+                        messages: [
+                            {
+                                role: 'system',
+                                content: `당신은 Hugging Face Daily Papers 뉴스레터의 논문들에 대해 답변하는 AI 어시스턴트입니다. 
+사용자의 질문에 이 뉴스레터에 있는 논문들을 바탕으로 한국어로 답변해 주세요.
+논문 제목,研究方向, 핵심 내용 등을 활용하여 정확하고 유용한 정보를 제공해 주세요.
+
+${papersContext}`
+                            },
+                            {
+                                role: 'user',
+                                content: userMessage
+                            }
+                        ]
+                    })
+                });
+
+                const data = await response.json();
+                removeLoadingMessage();
+
+                if (data.choices && data.choices[0] && data.choices[0].message) {
+                    addMessage(data.choices[0].message.content, 'assistant');
+                } else if (data.error) {
+                    addMessage(`오류: ${data.error.message || 'API 호출에 실패했습니다.'}`, 'assistant');
+                } else {
+                    addMessage('예상치 못한 응답입니다.', 'assistant');
+                }
+            } catch (error) {
+                removeLoadingMessage();
+                addMessage(`오류가 발생했습니다: ${error.message}`, 'assistant');
+            }
+        }
+    </script>
+</body>
+</html>

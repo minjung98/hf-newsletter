@@ -1,0 +1,54 @@
+# 환경 변수 파일 (API 키, 비밀번호 등 민감한 정보 포함)
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 가상환경
+venv/
+env/
+ENV/
+.venv/
+
+# 로그 파일
+logs/
+*.log
+
+# 생성된 뉴스레터 출력 파일 (선택사항 - 필요시 주석 해제)
+# newsletter.html
+# newsletter.txt
+
+# OS 관련
+.DS_Store
+Thumbs.db
+
+# IDE 관련
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 기타
+*.bak
+*.tmp

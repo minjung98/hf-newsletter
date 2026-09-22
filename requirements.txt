@@ -1,0 +1,12 @@
+# Hugging Face Daily Papers Newsletter
+# Hugging Face 일일 논문을 한국어로 번역하여 뉴스레터로 발송하는 도구
+
+# Core dependencies
+httpx>=0.25.0        # HTTP client for fetching papers
+python-dotenv>=1.0.0  # Environment variables management
+
+# Optional: For better translation with OpenAI
+# openai>=1.0.0
+
+# Optional: For scheduling (cron jobs on Mac/Linux)
+# schedule>=1.2.0
