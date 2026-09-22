@@ -173,11 +173,8 @@ hf_papers_newsletter/
 
 ## ❓ 자주 묻는 질문
 
-### Q: Gmail以外的 이메일 서비스 사용 가능?
+### Q: Gmail 이메일 서비스 사용 가능?
 A: 현재는 Gmail SMTP만 지원합니다. 다른 서비스(SendGrid, Mailgun 등)는 나중에 지원 예정입니다.
-
-### Q: 번역 품질이 낮습니다.
-A: `--openai` 옵션을 사용하면 GPT-4o-mini를 통한 高品质 번역을 사용할 수 있습니다.
 
 ### Q: 매일 자동으로 실행하고 싶습니다.
 A: 위의 스케줄링 섹션을 참고하여 cron 또는 launchd를 설정하세요.
